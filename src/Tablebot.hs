@@ -58,7 +58,7 @@ runTablebot dToken prefix dbpath plugins =
             flip runSqlPool pool . eventHandler plugin prefix,
         discordOnStart =
             -- Build list of cron jobs, saving them to the mvar.
-            runSqlPool (mapM runCron (cronJobs plugin) >>= liftIO . putMVar mvar) pool,
+            runSq-lPool (mapM runCron (cronJobs plugin) >>= liftIO . putMVar mvar) pool,
         -- Kill every cron job in the mvar.
         discordOnEnd = takeMVar mvar >>= killCron
     }
