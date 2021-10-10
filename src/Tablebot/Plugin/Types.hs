@@ -51,6 +51,19 @@ data Command = Command {
     commandParser :: Parser (Message -> DatabaseDiscord ())
 }
 
+data SmartArgs = IntArg | StringArg | BoolArg
+data ArgSpec = SmartArgs :/: ArgSpec | Rest | End | Multiple SmartArgs
+infixr 5 :/:
+
+data SmartValue = SInt Int | SStr String | SBool Bool
+
+data SmartCommand = SmartCommand {
+    smartName :: Text,
+    smartEffect :: [SmartValue] -> Message -> DatabaseDiscord (),
+    smartSubcommands :: [SmartCommand],
+    smartArgs :: ArgSpec
+}
+
 -- | For when you get a 'MessageCreate', but instead of wanting to match on
 -- "!name args" (for prefix "!"), you want a more general match. Useful for
 -- commands that work with brackets or look for keywords.
