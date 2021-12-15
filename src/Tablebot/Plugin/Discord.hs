@@ -39,7 +39,6 @@ module Tablebot.Plugin.Discord
 where
 
 import Control.Monad.Exception
-import Control.Monad.IO.Class (liftIO)
 import Data.Foldable (msum)
 import Data.Map.Strict (keys)
 import Data.Maybe (listToMaybe)
@@ -52,7 +51,7 @@ import Discord.Internal.Gateway.Cache
 import qualified Discord.Requests as R
 import Discord.Types
 import Tablebot.Handler.Embed
-import Tablebot.Plugin (DatabaseDiscord, EnvDatabaseDiscord (..), liftDiscord)
+import Tablebot.Plugin (DatabaseDiscord, EnvDatabaseDiscord, liftDiscord)
 import Tablebot.Plugin.Exception (BotException (..))
 
 -- | @sendMessage@ sends the input message @t@ in the same channel as message
