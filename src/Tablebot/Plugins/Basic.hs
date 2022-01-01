@@ -44,7 +44,7 @@ type BasicCommand = (Text, Text, MiniHelpPage)
 basicCommands :: [BasicCommand]
 basicCommands =
   [ ( "pr",
-      "You can make a pull request for that!",
+      "You can make a pull request for that! -- changed",
       Simple ("you know what to do", "You know what to do")
     ),
     ( "issue",
